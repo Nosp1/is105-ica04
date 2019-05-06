@@ -3,34 +3,29 @@ package IBM
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/IBM/go-sdk-core/core"
 	"github.com/watson-developer-cloud/go-sdk/speechtotextv1"
 	"io"
-	"io/ioutil"
 	"os"
 )
 
 const url = "https://gateway-lon.watsonplatform.net/speech-to-text/api"
 
-func GetSpeech(input_file string) string {
+func GetSpeech(inputFile string, key string) string {
 
 	var resultString string
 
-	key, err := ioutil.ReadFile("./IBM/API.txt")
-	if err != nil {
-		panic(err)
-	}
-
 	speechToText, speechToTextErr :=
 		speechtotextv1.NewSpeechToTextV1(&speechtotextv1.SpeechToTextV1Options{
-			IAMApiKey: string(key),
+			IAMApiKey: key,
 			URL:       url,
 		})
 	if speechToTextErr != nil {
 		panic(speechToTextErr)
 	}
 
-	files := [1]string{input_file}
+	files := [1]string{inputFile}
 	for _, file := range files {
 		var audioFile io.ReadCloser
 		var audioFileErr error
@@ -58,6 +53,8 @@ func GetSpeech(input_file string) string {
 		b, _ := json.MarshalIndent(result, "", "  ")
 		resultString = string(b)
 	}
+
+	fmt.Println(files)
 
 	return resultString
 }
