@@ -11,7 +11,7 @@ func JSONFormat(s string) (string, string) {
 	json.Unmarshal([]byte(s), &result)
 
 	return result.Results[0].Alternatives[0].Transcript,
-		fmt.Sprintf("confidence: %f%%", result.Results[0].Alternatives[0].Confidence*100)
+		fmt.Sprintf("confidence: %.2f%%", result.Results[0].Alternatives[0].Confidence*100)
 }
 
 type FormattedJSON struct {
