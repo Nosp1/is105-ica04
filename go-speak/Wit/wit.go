@@ -69,7 +69,7 @@ func SendWitMessage(message string) string {
 *@return a string with the json data received
 **/
 
-func SendWitVoice(fileRef string) string {
+func SendWitVoice(fileRef string) (string, string) {
 	audio, err := ioutil.ReadFile(fileRef)
 	if err != nil {
 		log.Fatal("Error reading file:\n%v\n", err)
@@ -99,7 +99,7 @@ func SendWitVoice(fileRef string) string {
 		fmt.Println("There was an error:", err)
 	}
 
-	return string(speechtotext.Text)
+	return string(speechtotext.Text), fmt.Sprintf("%f", speechtotext.Outcomes[0].Confidence)
 }
 func SendWitBuff(buffer *bytes.Buffer) string {
 	url := "https://api.wit.ai/speech?v=20141022"
