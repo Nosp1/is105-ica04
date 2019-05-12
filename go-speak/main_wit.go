@@ -8,6 +8,8 @@ import (
 func main(){
 	speech.SetWitKey(UseYourWitKeyHere)
 	print := speech.SendWitVoice("test.wav")
+
 	fmt.Println("The text from the audio file: ", print)
+	fmt.Println(confidence)
 }
 
