@@ -2,12 +2,13 @@ package main
 
 import (
 	"fmt"
-	"./Wit"
+	"github.com/Henrikohlsen/Is-105/is105-ica04/go-speak/Wit"
 )
 
 func main(){
-	speech.SetWitKey("AGBTMHDDRJUD7FBTFSY3MJLTJS4SEY73")
-	print, confidence := speech.SendWitVoice("test.wav")
+	speech.SetWitKey(UseYourWitKeyHere)
+	print := speech.SendWitVoice("test.wav")
+
 	fmt.Println("The text from the audio file: ", print)
 	fmt.Println(confidence)
 }
