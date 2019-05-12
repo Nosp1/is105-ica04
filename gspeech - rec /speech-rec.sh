@@ -22,9 +22,7 @@ EOF
 DURATION=3
 LANGUAGE=en_US
 # Please replace this with your own key
-#KEY=AIzaSyD0RJQ6LeTpJTlUhlsiyWzSp2asiB52KJk
-KEY=cebd5d043e3dec4e840ebba705821b68fbb70d45
-
+KEY= #your key here#
 
 record() {
     DURATION=$1
